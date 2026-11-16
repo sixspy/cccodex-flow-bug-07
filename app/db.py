@@ -13,8 +13,14 @@ SEEDS = [
 def connect(db_path=None):
     path = db_path or Config.database()
     Path(path).parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(path, check_same_thread=False)
+    # isolation_level=None：真正的 autocommit，事务由业务层显式 BEGIN/COMMIT 控制，
+    # 否则 pysqlite 隐式开的延迟事务会与 BEGIN IMMEDIATE 冲突
+    conn = sqlite3.connect(path, check_same_thread=False, timeout=30, isolation_level=None)
     conn.row_factory = sqlite3.Row
+    # 并发写事务排队等待，而不是立刻抛 database is locked
+    conn.execute("PRAGMA busy_timeout=30000")
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA foreign_keys=ON")
     return conn
 
 @contextmanager

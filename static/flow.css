@@ -37,4 +37,31 @@ label { display:block; margin:.7rem 0; }
 input { width:100%; margin-top:.3rem; padding:.5rem .65rem; border:1px solid var(--line); border-radius:8px; }
 .err { color:#b91c1c; min-height:1.2rem; }
 .hint { color:#3f6b63; }
+/* 支路抢领面板：领段列表 → 拼段详情 → 收口页 */
+.plant-panel { margin-top: 1rem; padding: 1.2rem; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); }
+.plant-head { display:flex; justify-content:space-between; align-items:center; gap:.8rem; flex-wrap:wrap; }
+.plant-head h3 { margin: 0; }
+.plant-grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:1rem; margin-top:1rem; }
+.card { border:1px solid var(--line); border-radius:10px; padding:1rem; background:#fff; }
+.card h3 { margin:0 0 .7rem; font-size:.95rem; display:flex; justify-content:space-between; align-items:center; gap:.5rem; }
+.branch-table { width:100%; border-collapse:collapse; font-size:.85rem; }
+.branch-table td { padding:.45rem .35rem; border-bottom:1px solid var(--line); vertical-align:middle; }
+tr.is-claimed td { background:#f1faf6; }
+.progress { font-weight:400; font-size:.8rem; color:var(--accent); }
+.tag { display:inline-block; padding:.1rem .5rem; border-radius:999px; font-size:.75rem; white-space:nowrap; }
+.tag-open { background:#fdecec; color:#b91c1c; }
+.tag-wait { background:#fef3d7; color:#92610d; }
+.tag-ok { background:#d7efe8; color:var(--accent); }
+.tag-strategy { background:var(--accent); color:#e8fffa; }
+button.mini { padding:.28rem .65rem; font-size:.8rem; }
+button:disabled { opacity:.5; cursor:not-allowed; border-color:#9bbab2; background:#9bbab2; }
+.who-line { margin:.7rem 0 .3rem; font-size:.85rem; }
+.who-line input { padding:.4rem .55rem; }
+.branch-lines { list-style:none; margin:0 0 .8rem; padding:0; display:grid; gap:.35rem; font-size:.85rem; }
+.warn { color:#b91c1c; font-size:.85rem; font-weight:600; }
+.plant-err { margin:.6rem 0 0; }
+.strategy-banner { border:1px dashed var(--accent); border-radius:8px; padding:.7rem; background:#f1faf6; display:grid; gap:.35rem; margin-bottom:.7rem; }
+.strategy-banner strong { color:var(--accent); }
+.closeout .hint { margin:.45rem 0; }
+@media (max-width: 1100px) { .plant-grid { grid-template-columns: 1fr; } }
 @media (max-width: 800px) { .layout { grid-template-columns: 1fr; } }
